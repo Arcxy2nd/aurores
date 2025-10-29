@@ -1,0 +1,203 @@
+/**
+ * @name Miles Morales V2
+ * @author Spider-Goat Society
+ * @version 7.0.1+fusion
+ * @description Thème de Brandon le noir qui mange du poulet et du riz fait sur ClearVision V7
+ * @source https://github.com/ClearVision/ClearVision-v7
+ * @BDEditor Clear Vision
+ */
+
+/* IMPORT CSS */
+@import url("https://clearvision.github.io/ClearVision-v7/main.css");
+@import url("https://clearvision.github.io/ClearVision-v7/vencord.css");
+
+/* SETTINGS */
+:root {
+  /* ACCENT COLORS */
+  --main-color: #00FFC3; /* main accent color (hex, rgb or hsl) [default: #e67a27] */
+  --hover-color: #FFFFFF; /* hover accent color (hex, rgb or hsl) [default: #b35d1e] */
+  --success-color: #8400ff; /* positive accent color (hex, rgb or hsl) [default: #43b581] */
+  --danger-color: #FF0000; /* danger accent color (hex, rgb or hsl) [default: #982929] */
+  --url-color: #00FFC3; /* url accent color (hex, rgb or hsl) [default: var(--main-color)] */
+  
+  /* STATUS COLORS */
+  --online-color: #00FFCA; /* online status color (hex, rgb or hsl) [default: #43b581] */
+  --idle-color: #FAA61A; /* idle status color (hex, rgb or hsl) [default: #faa61a] */
+  --dnd-color: #982929; /* dnd status color (hex, rgb or hsl) [default: #982929] */
+  --streaming-color: #593695; /* streaming status color (hex, rgb or hsl) [default: #593695] */
+  --offline-color: #808080; /* offline/invisible status color (hex, rgb or hsl) [default: #808080] */
+  
+  /* APP BACKGROUND */
+  --background-shading-percent: 50%; /* app background shading amount (0 for complete smoothness) [default: 100%] */
+  --background-image: url('https://files.catbox.moe/j07kk5.webp'); /* app background image (link must be HTTPS) [default: url(https://clearvision.github.io/images/amber.jpg)]*/
+  --background-position: center; /* app background position [default: center] */
+  --background-size: cover; /* app background size (px) [default: cover] */
+  --background-attachment: scroll; /* app background attachment [default: fixed] */
+  --background-brightness: 100%; /* app background brightness [default: 100%] */
+  --background-contrast: 100%; /* app background contrast [default: 100%] */
+  --background-saturation: 100%; /* app background saturation [default: 100%] */
+  --background-grayscale: 0%; /* app background grayscale [default: 0%] */
+  --background-invert: 0%; /* app background invert [default: 0%] */
+  --background-blur: 0px; /* app background blur [default: 0px] */
+  --background-overlay: rgba(0,0,0,0.6); /* app background overlay [default: rgba(0,0,0,0.6)] */
+  --background-filter: none; /* app background adjustments (ex: blur, saturation, brightness) (more info: https://developer.mozilla.org/en-US/docs/Web/CSS/filter) [default: saturate(calc(var(--saturation-factor, 1) * 1))] */
+  
+  /* USER POPOUT BACKGROUND */
+  --user-popout-image: var(--background-image); /* user popout background image (link must be HTTPS) (not applied to nitro users) [default: var(--background-image)] */
+  --user-popout-position: center; /* user popout position [default: var(--background-position)] */
+  --user-popout-size: cover; /* user popout size (px) [default: var(--background-size)] */
+  --user-popout-attachment: scroll; /* user popout background attachment [default: var(--background-attachment)] */
+  --user-popout-brightness: 50%; /* user popout brightness [default: 100%] */
+  --user-popout-contrast: 100%; /* user popout contrast [default: 100%] */
+  --user-popout-saturation: 100%; /* user popout saturation [default: 100%] */
+  --user-popout-grayscale: 0%; /* user popout grayscale [default: 0%] */
+  --user-popout-invert: 0%; /* user popout invert [default: 0%] */
+  --user-popout-blur: 3px; /* user popout blur [default: 0px] */
+  --user-popout-filter: none; /* user popout background adjustments (ex: blur, saturation, brightness) (more info: https://developer.mozilla.org/en-US/docs/Web/CSS/filter) [default: var(--background-filter);] */
+  
+  /* USER MODAL BACKGROUND */
+  --user-modal-image: var(--background-image); /* user modal background image (link must be HTTPS) (not applied to nitro users) [default: var(--background-image)] */
+  --user-modal-position: center; /* user modal position [default: var(--background-position)] */
+  --user-modal-size: cover; /* user modal size (px) [default: var(--background-size)] */
+  --user-modal-attachment: scroll; /* user modal background attachment [default: var(--background-attachment)] */
+  --user-modal-brightness: 50%; /* user modal brightness [default: 100%] */
+  --user-modal-contrast: 100%; /* user modal contrast [default: 100%] */
+  --user-modal-saturation: 100%; /* user modal saturation [default: 100%] */
+  --user-modal-grayscale: 0%; /* user modal grayscale [default: 0%] */
+  --user-modal-invert: 0%; /* user modal invert [default: 0%] */
+  --user-modal-blur: 3px; /* user modal blur [default: 0px] */
+  --user-modal-filter: none; /* user modal background adjustments (ex: blur, saturation, brightness) (more info: https://developer.mozilla.org/en-US/docs/Web/CSS/filter) [default: var(--background-filter);] */
+  
+  /* HOME ICON */
+  --home-icon: url('https://files.catbox.moe/aghomb.png'); /* home button icon (link must be HTTPS) [default: url(https://clearvision.github.io/icons/discord.svg)]*/
+  --home-position: center; /* home button position [default: center] */
+  --home-size: 40px; /* home button icon size (px) [default:cover] */
+  
+  /* FONTS */
+  --main-font: "gg sans", sans-serif; /* main font for app (font must be installed) [default: gg sans, Helvetica Neue, Helvetica, Arial, sans-serif] */
+  --code-font: Consolas, monospace; /* font for codeblocks (font must be installed) [default: Consolas, Liberation Mono, Menlo, Courier, monospace] */
+  
+  /* CHANNEL COLORS */
+  --channel-normal: rgb(0,255,164,1); /* channel text color [default: var(--interactive-normal)] */
+  --channel-muted: rgb(23,105,88,); /* muted channel text color [default: var(--interactive-muted)] */
+  --channel-hover: var(--hover-color); /* hovered channel text color [default: var(--interactive-hover)] */
+  --channel-selected: var(--interactive-active); /* selected channel text color [default: var(--interactive-active)] */
+  --channel-selected-bg: rgb(0,222,169); /* selected channel background [default: var(--main-color)] */
+  --channel-unread: #00FFCA; /* unread channel text color [default: var(--main-color)] */
+  --channel-unread-hover: var(--hover-color); /* unread channel hover color [default: var(--hover-color)] */
+  
+  /* LAYOUT WIDTHS */
+  --channels-width: 220px; /* channels list width [default: 220px] */
+  --members-width: 240px; /* members list width [default: 240px] */
+  
+  /* BACKDROP */
+  --backdrop-overlay: rgba(0,0,0,0.8); /* backdrop overlay color [default: rgba(0,0,0,0.8)] */
+  --backdrop-image: var(--background-image); /* backdrop image (link must be HTTPS) [default: var(--background-image)] */
+  --backdrop-position: var(--background-position); /* backdrop position [default: var(--background-position)] */
+  --backdrop-size: var(--background-size); /* backdrop size (px) [default: var(--background-size)] */
+  --backdrop-repeat: var(--background-repeat); /* backdrop repeat [default: var(--background-repeat)] */
+  --backdrop-attachment: scroll; /* backdrop attachment [default: var(--background-attachment)] */
+  --backdrop-brightness: var(--background-brightness); /* backdrop brightness [default: var(--background-brightness)] */
+  --backdrop-contrast: var(--background-contrast); /* backdrop contrast [default: var(--background-contrast)] */
+  --backdrop-saturation: var(--background-saturation); /* backdrop saturation [default: var(--background-saturation)] */
+  --backdrop-invert: var(--background-invert); /* backdrop invert [default: var(--background-invert)] */
+  --backdrop-grayscale: var(--background-grayscale); /* backdrop grayscale [default: var(--background-grayscale)] */
+  --backdrop-blur: var(--background-blur); /* backdrop blur [default: var(--background-blur)] */
+  
+  /* ACCESSIBILITY */
+  --focus-color: var(--main-color); /* outline when pressing TAB key [default: var(--main-color)] */
+  
+  /* BETTERDISCORD BUTTONS */
+  --bd-blue: var(--main-color); /* betterdiscord buttons color [default: var(--main-color)] */
+  --bd-blue-hover: var(--hover-color); /* betterdiscord buttons hover color [default: var(--hover-color)] */
+  --bd-blue-active: var(--hover-color); /* betterdiscord buttons active color [default: var(--hover-color)] */
+}
+
+/* THEME SPECIFIC SHADING */
+/* LIGHT THEME */
+:is(.theme-light, .theme-dark .theme-light) {
+  --background-shading: rgba(252,252,252,0.3); /* app background shading color [default: rgba(252, 252, 252, 0.3)] */
+  --card-shading: rgba(252,252,252,0.3); /* cards background shading color [default: rgba(252, 252, 252, 0.3)] */
+  --popout-shading: rgba(252,252,252,0.7); /* popouts background shading color [default: rgba(252, 252, 252, 0.7)] */
+  --modal-shading: rgba(252,252,252,0.5); /* modals background shading color [default: rgba(0, 0, 0, 0.6)] */
+  --input-shading: rgba(0,0,0,0.3); /* inputs background shading color [default: rgba(0, 0, 0, 0.6)] */
+  --normal-text: #36363c; /* text color [default: #36363c] */
+  --muted-text: #75757e; /* muted text color [default: #75757e] */
+}
+
+/* ASH THEME */
+:is(.theme-dark, .theme-light .theme-dark) {
+  --background-shading: rgba(0,0,0,0.4); /* app background shading color [default: rgba(0, 0, 0, 0.4)] */
+  --card-shading: rgba(0,0,0,0.2); /* cards background shading color [default: rgba(0, 0, 0, 0.2)] */
+  --popout-shading: rgba(0,0,0,0.6); /* popouts background shading color [default: rgba(0, 0, 0, 0.6)] */
+  --modal-shading: rgba(0,0,0,0.4); /* modals background shading color [default: rgba(0, 0, 0, 0.4)] */
+  --input-shading: rgba(255,255,255,0.05); /* inputs background shading color [default: rgba(255, 255, 255, 0.05)] */
+  --normal-text: #d8d8db; /* text color [default: #d8d8db] */
+  --muted-text: #aeaeb4; /* muted text color [default: #aeaeb4] */
+}
+
+/* DARK THEME */
+:is(.theme-darker, .theme-light .theme-darker) {
+  --background-shading: rgba(0,0,0,0.6); /* app background shading color [default: rgba(0, 0, 0, 0.6)] */
+  --card-shading: rgba(0,0,0,0.3); /* cards background shading color [default: rgba(0, 0, 0, 0.3)] */
+  --popout-shading: rgba(0,0,0,0.7); /* popouts background shading color [default: rgba(0, 0, 0, 0.7)] */
+  --modal-shading: rgba(0,0,0,0.5); /* modals background shading color [default: rgba(0, 0, 0, 0.6)] */
+  --input-shading: rgba(255,255,255,0.05); /* inputs background shading color [default: rgba(255, 255, 255, 0.05)] */
+  --normal-text: #fbfbfb; /* text color [default: #fbfbfb] */
+  --muted-text: #94949c; /* muted text color [default: #94949c] */
+}
+
+/* ONYX THEME */
+:is(.theme-midnight, .theme-light .theme-midnight) {
+  --background-shading: rgba(0,0,0,0.8); /* app background shading color [default: rgba(0, 0, 0, 0.8)] */
+  --card-shading: rgba(0,0,0,0.4); /* cards background shading color [default: rgba(0, 0, 0, 0.4)] */
+  --popout-shading: rgba(0,0,0,0.8); /* popouts background shading color [default: rgba(0, 0, 0, 0.8)] */
+  --modal-shading: rgba(0,0,0,0.6); /* modals background shading color [default: rgba(0, 0, 0, 0.6)] */
+  --input-shading: rgba(255,255,255,0.05); /* inputs background shading color [default: rgba(255, 255, 255, 0.05)] */
+  --normal-text: #dcdcde; /* text color [default: #dcdcde] */
+  --muted-text: #86868e; /* muted text color [default: #86868e] */
+}
+
+/* PERFORMANCE OPTIMIZATIONS */
+:root {
+  /* Évite les repaints liés au fixed */
+  --background-attachment: scroll;
+  --backdrop-attachment: scroll;
+  --user-popout-attachment: scroll;
+  --user-modal-attachment: scroll;
+
+  /* Coupe tous les filtres pour meilleures performances */
+  --background-filter: none;
+  --user-popout-filter: none;
+  --user-modal-filter: none;
+}
+
+/* Neutralise tout backdrop/filter résiduel */
+#app-mount::before,
+#app-mount::after,
+[class*="backdrop"],
+[class*="popout"],
+[class*="modal"] {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  filter: none !important;
+}
+
+/* Option: réduit fortement les animations (si micro-freezes persistants) */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* ADDITIONAL CSS BELOW THIS LINE */
+/* (Ajoute ici tes règles sur-mesure : masquage, animations, etc.) */
+/* Neutralise juste l'effet de flou du backdrop global (safe pour Paramètres) */
+#app-mount::before,
+#app-mount::after,
+[class*="backdrop"] {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Option: si tu veux aussi couper le blur des popouts SANS toucher aux modals/settings,
+   décommente la ligne ci-dessous. Laisse les modals tranquilles. */
+/* [class*="popout"] { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; } */

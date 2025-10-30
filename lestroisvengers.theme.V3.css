@@ -1,11 +1,9 @@
 /**
- * @name Troisvengers v3
+ * @name Troisvengers V3
  * @author NAN
  * @version 7.0.1+fusion
  * @description Thème hautement personnalisable pour Vencord, revisité avec les teintes et arrière-plans du thème lestroispilierstrois.
  * @source https://github.com/ClearVision/ClearVision-v7
- * @website https://clearvision.github.io
- * @invite dHaSxn3
  */
 
 /* IMPORT CSS */
@@ -16,8 +14,8 @@
 :root {
   /* ACCENT COLORS */
   --main-color: #00FFC3; /* main accent color (hex, rgb or hsl) [default: #e67a27] */
-  --hover-color: #00D3A1; /* hover accent color (hex, rgb or hsl) [default: #b35d1e] */
-  --success-color: #1DD9AD; /* positive accent color (hex, rgb or hsl) [default: #43b581] */
+  --hover-color: #FFFFFF; /* hover accent color (hex, rgb or hsl) [default: #b35d1e] */
+  --success-color: #00FFC3; /* positive accent color (hex, rgb or hsl) [default: #43b581] */
   --danger-color: #FF0000; /* danger accent color (hex, rgb or hsl) [default: #982929] */
   --url-color: #00FFC3; /* url accent color (hex, rgb or hsl) [default: var(--main-color)] */
   
@@ -74,21 +72,22 @@
   --home-position: center; /* home button position [default: center] */
   --home-size: 40px; /* home button icon size (px) [default:cover] */
   
+  
   /* CHANNEL COLORS */
-  --channel-normal: rgb(0,255,153,1); /* channel text color [default: var(--interactive-normal)] */
-  --channel-muted: rgb(0,141,108,1); /* muted channel text color [default: var(--interactive-muted)] */
+  --channel-normal: rgb(0,255,164,1); /* channel text color [default: var(--interactive-normal)] */
+  --channel-muted: rgb(23,105,88,); /* muted channel text color [default: var(--interactive-muted)] */
   --channel-hover: var(--hover-color); /* hovered channel text color [default: var(--interactive-hover)] */
   --channel-selected: var(--interactive-active); /* selected channel text color [default: var(--interactive-active)] */
-  --channel-selected-bg: var(--main-color); /* selected channel background [default: var(--main-color)] */
-  --channel-unread: #00FFC3; /* unread channel text color [default: var(--main-color)] */
+  --channel-selected-bg: #00b883; /* selected channel background [default: var(--main-color)] */
+  --channel-unread: #00FFCA; /* unread channel text color [default: var(--main-color)] */
   --channel-unread-hover: var(--hover-color); /* unread channel hover color [default: var(--hover-color)] */
   
   /* FONTS */
   --main-font: "gg sans", "Helvetica Neue", Helvetica, Arial, sans-serif; /* main font for app (font must be installed) [default: gg sans, Helvetica Neue, Helvetica, Arial, sans-serif] */
   --code-font: Consolas, "gg mono", "Liberation Mono", Menlo, Courier, monospace; /* font for codeblocks (font must be installed) [default: Consolas, Liberation Mono, Menlo, Courier, monospace] */
-  
-  /* ACCESSIBILITY */
-  --focus-color: var(--main-color); /* outline when pressing TAB key [default: var(--main-color)] */
+  /* LAYOUT WIDTHS */
+  --channels-width: 220px; /* channels list width [default: 220px] */
+  --members-width: 240px; /* members list width [default: 240px] */
   
   /* BACKDROP SETTINGS */
   --backdrop-overlay: rgba(0,0,0,0.8); /* backdrop overlay color [default: rgba(0,0,0,0.8)] */
@@ -104,15 +103,13 @@
   --backdrop-grayscale: var(--background-grayscale); /* backdrop grayscale [default: var(--background-grayscale)] */
   --backdrop-sepia: var(--background-sepia); /* backdrop sepia [default: var(--background-sepia)] */
   --backdrop-blur: var(--background-blur); /* backdrop blur [default: var(--background-blur)] */
+  /* ACCESSIBILITY */
+  --focus-color: var(--main-color); /* outline when pressing TAB key [default: var(--main-color)] */
   
   /* BETTERDISCORD COMPATIBILITY */
   --bd-blue: var(--main-color); /* betterdiscord blue color [default: var(--main-color)] */
   --bd-blue-hover: var(--hover-color); /* betterdiscord blue hover color [default: var(--hover-color)] */
   --bd-blue-active: var(--hover-color); /* betterdiscord blue active color [default: var(--hover-color)] */
-  
-  /* CUSTOM SETTINGS */
-  --channels-width: 220px; /* channels width [custom] */
-  --members-width: 240px; /* members width [custom] */
 }
 
 /* THEME SPECIFIC SHADING */
@@ -161,15 +158,32 @@
 }
 
 /* ADDITIONAL CSS BELOW THIS LINE */
-/* ===== PATCH SAFE FINAL — À COLLER EN BAS ===== */
-/* Neutralise juste l'effet de flou du backdrop global (safe pour Paramètres) */
-#app-mount::before,
-#app-mount::after,
-[class*="backdrop"] {
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
+/* PERFORMANCE OPTIMIZATIONS */
+:root {
+  /* Évite les repaints liés au fixed */
+  --background-attachment: scroll;
+  --backdrop-attachment: scroll;
+  --user-popout-attachment: scroll;
+  --user-modal-attachment: scroll;
+
+  /* Coupe tous les filtres pour meilleures performances */
+  --background-filter: none;
+  --user-popout-filter: none;
+  --user-modal-filter: none;
 }
 
-/* Option: si tu veux aussi couper le blur des popouts SANS toucher aux modals/settings,
-   décommente la ligne ci-dessous. Laisse les modals tranquilles. */
-/* [class*="popout"] { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; } */
+/* Neutralise tout backdrop/filter résiduel */
+#app-mount::before,
+#app-mount::after,
+[class*="backdrop"],
+[class*="popout"],
+[class*="modal"] {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  filter: none !important;
+}
+
+/* Option: réduit fortement les animations (si micro-freezes persistants) */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

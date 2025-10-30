@@ -4,7 +4,6 @@
  * @version 7.0.1+fusion
  * @description Thème de Brandon le noir qui mange du poulet et du riz fait sur ClearVision V7
  * @source https://github.com/ClearVision/ClearVision-v7
- * @BDEditor Clear Vision
  */
 
 /* IMPORT CSS */
@@ -21,10 +20,10 @@
   --url-color: #00FFC3; /* url accent color (hex, rgb or hsl) [default: var(--main-color)] */
   
   /* STATUS COLORS */
-  --online-color: #00FFCA; /* online status color (hex, rgb or hsl) [default: #43b581] */
-  --idle-color: #FAA61A; /* idle status color (hex, rgb or hsl) [default: #faa61a] */
-  --dnd-color: #982929; /* dnd status color (hex, rgb or hsl) [default: #982929] */
-  --streaming-color: #593695; /* streaming status color (hex, rgb or hsl) [default: #593695] */
+  --online-color: #00FF8E; /* online status color (hex, rgb or hsl) [default: #43b581] */
+  --idle-color: #FF9F00; /* idle status color (hex, rgb or hsl) [default: #faa61a] */
+  --dnd-color: #FF0000; /* dnd status color (hex, rgb or hsl) [default: #982929] */
+  --streaming-color: #5E00FF; /* streaming status color (hex, rgb or hsl) [default: #593695] */
   --offline-color: #808080; /* offline/invisible status color (hex, rgb or hsl) [default: #808080] */
   
   /* APP BACKGROUND */
@@ -39,7 +38,7 @@
   --background-grayscale: 0%; /* app background grayscale [default: 0%] */
   --background-invert: 0%; /* app background invert [default: 0%] */
   --background-blur: 0px; /* app background blur [default: 0px] */
-  --background-overlay: rgba(0,0,0,0.6); /* app background overlay [default: rgba(0,0,0,0.6)] */
+  --background-overlay: rgba(0,0,0,0.6); /* app background overlay [default: transparent] */
   --background-filter: none; /* app background adjustments (ex: blur, saturation, brightness) (more info: https://developer.mozilla.org/en-US/docs/Web/CSS/filter) [default: saturate(calc(var(--saturation-factor, 1) * 1))] */
   
   /* USER POPOUT BACKGROUND */
@@ -73,9 +72,6 @@
   --home-position: center; /* home button position [default: center] */
   --home-size: 40px; /* home button icon size (px) [default:cover] */
   
-  /* FONTS */
-  --main-font: "gg sans", sans-serif; /* main font for app (font must be installed) [default: gg sans, Helvetica Neue, Helvetica, Arial, sans-serif] */
-  --code-font: Consolas, monospace; /* font for codeblocks (font must be installed) [default: Consolas, Liberation Mono, Menlo, Courier, monospace] */
   
   /* CHANNEL COLORS */
   --channel-normal: rgb(0,255,164,1); /* channel text color [default: var(--interactive-normal)] */
@@ -86,6 +82,9 @@
   --channel-unread: #00FFCA; /* unread channel text color [default: var(--main-color)] */
   --channel-unread-hover: var(--hover-color); /* unread channel hover color [default: var(--hover-color)] */
   
+  /* FONTS */
+  --main-font: "gg sans", "Helvetica Neue", Helvetica, Arial, sans-serif; /* main font for app (font must be installed) [default: gg sans, Helvetica Neue, Helvetica, Arial, sans-serif] */
+  --code-font: Consolas, "gg mono", "Liberation Mono", Menlo, Courier, monospace; /* font for codeblocks (font must be installed) [default: Consolas, Liberation Mono, Menlo, Courier, monospace] */
   /* LAYOUT WIDTHS */
   --channels-width: 220px; /* channels list width [default: 220px] */
   --members-width: 240px; /* members list width [default: 240px] */
@@ -102,8 +101,8 @@
   --backdrop-saturation: var(--background-saturation); /* backdrop saturation [default: var(--background-saturation)] */
   --backdrop-invert: var(--background-invert); /* backdrop invert [default: var(--background-invert)] */
   --backdrop-grayscale: var(--background-grayscale); /* backdrop grayscale [default: var(--background-grayscale)] */
+  --backdrop-sepia: var(--background-sepia); /* backdrop sepia [default: var(--background-sepia)] */
   --backdrop-blur: var(--background-blur); /* backdrop blur [default: var(--background-blur)] */
-  
   /* ACCESSIBILITY */
   --focus-color: var(--main-color); /* outline when pressing TAB key [default: var(--main-color)] */
   
@@ -158,6 +157,7 @@
   --muted-text: #86868e; /* muted text color [default: #86868e] */
 }
 
+/* ADDITIONAL CSS BELOW THIS LINE */
 /* PERFORMANCE OPTIMIZATIONS */
 :root {
   /* Évite les repaints liés au fixed */
@@ -187,17 +187,3 @@
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
-
-/* ADDITIONAL CSS BELOW THIS LINE */
-/* (Ajoute ici tes règles sur-mesure : masquage, animations, etc.) */
-/* Neutralise juste l'effet de flou du backdrop global (safe pour Paramètres) */
-#app-mount::before,
-#app-mount::after,
-[class*="backdrop"] {
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-}
-
-/* Option: si tu veux aussi couper le blur des popouts SANS toucher aux modals/settings,
-   décommente la ligne ci-dessous. Laisse les modals tranquilles. */
-/* [class*="popout"] { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; } */
